@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:apify.com)",
+      "WebSearch"
+    ]
+  }
+}

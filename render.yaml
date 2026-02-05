@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: linkedin-lead-pipeline
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SLACK_BOT_TOKEN
+        sync: false
+      - key: SLACK_SIGNING_SECRET
+        sync: false
+      - key: SLACK_CHANNEL_ID
+        sync: false
+      - key: SLACK_APP_TOKEN
+        sync: false
+      - key: APIFY_API_TOKEN
+        sync: false
+      - key: APOLLO_API_KEY
+        sync: false
+      - key: SMARTLEAD_API_KEY
+        sync: false
+      - key: SMARTLEAD_CAMPAIGN_ID
+        sync: false

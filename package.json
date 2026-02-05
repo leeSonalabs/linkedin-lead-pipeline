@@ -1,0 +1,26 @@
+{
+  "name": "linkedin-lead-pipeline",
+  "version": "1.0.0",
+  "description": "Lead generation pipeline triggered by Slack messages - extracts LinkedIn post engagers, enriches with Apollo, validates emails, and pushes to Instantly",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.17.1",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.1"
+  },
+  "keywords": [
+    "linkedin",
+    "lead-generation",
+    "slack",
+    "apollo",
+    "instantly"
+  ],
+  "license": "MIT"
+}
