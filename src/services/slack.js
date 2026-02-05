@@ -139,6 +139,21 @@ class SlackService {
    * @returns {Promise<void>}
    */
   async start(onMessage) {
+    // Add health check endpoint for Render
+    const { createServer } = require('http');
+    const port = process.env.PORT || 3000;
+
+    createServer((req, res) => {
+      if (req.url === '/health' || req.url === '/') {
+        res.writeHead(200);
+        res.end('OK');
+      } else {
+        res.writeHead(404);
+        res.end();
+      }
+    }).listen(port, () => {
+      logger.info(`Health check server running on port ${port}`);
+    });
     // Listen for ALL messages first to debug
     this.app.event('message', async ({ event, say }) => {
       logger.info('Raw message event received', {
@@ -185,11 +200,10 @@ class SlackService {
       }
     });
 
-    // Start the app
-    const port = process.env.PORT || 3000;
-    await this.app.start(port);
+    // Start the Slack app (Socket Mode doesn't need a port)
+    await this.app.start();
 
-    logger.info(`Slack app started on port ${port}`);
+    logger.info('Slack app started');
     logger.info(`Listening for messages in channel: ${this.channelId}`);
   }
 
